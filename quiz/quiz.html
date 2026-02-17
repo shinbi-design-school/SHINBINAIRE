@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="クイズSHNBINEIREは、SHNBIデザインスクールにまつわるクイズを提供するゲームサイト。ユーザーのSHNBI愛を測ることができる。">
+    <title>クイズSHNBINEIRE</title>
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body class="quiz-body">
+  
+  <!-- タイマー（左上） -->
+  <div class="timer-wrap">
+    <img src="images/i_timer.png" alt="タイマー" class="timer-img">
+    <div class="timer-num" id="timerNum">10</div>
+  </div>
+
+  <!-- ヒントボタン（右上） -->
+  <div class="hint-buttons">
+    <button class="hint-btn" id="hint5050">
+      <img src="images/item_fifty.png" alt="50:50" class="img-default">
+      <img src="images/item_fifty2.png" alt="50:50" class="img-hover">
+    </button>
+    <button class="hint-btn" id="hintPhone">
+      <img src="images/item_tel.png" alt="テレフォン" class="img-default">
+    <img src="images/item_tel2.png" alt="テレフォン" class="img-hover">
+    </button>
+    <button class="hint-btn" id="hintInfo">
+      <img src="images/item_hint.png" alt="ヒント" class="img-default">
+    <img src="images/item_hint2.png" alt="ヒント" class="img-hover">
+    </button>
+  </div>
+
+  <!-- 問題エリア（height: 300px固定） -->
+  <div class="question-area">
+    
+    <!-- 問題文 -->
+    <div class="question-box">
+      <div class="box-line"></div>
+      <img src="images/bg_questions.png" alt="問題枠" class="question-frame">
+      <div class="question-text" id="questionText">
+        テキストテキストテキスト<br>テキストテキストテキストテキストテキスト
+      </div>
+    </div>
+
+    <!-- 選択肢 -->
+    <div class="answers-grid">
+      <!-- A -->
+      <button class="answer-btn answer-a" data-answer="1">
+        <div class="box-line-ans"></div> 
+        <img src="images/btn_a.png" alt="A" class="answer-frame img-default">
+        <img src="images/btn_a2.png" alt="A" class="answer-frame img-hover">
+        <span class="answer-text" id="answerA">ああああああああああああ</span>
+      </button>
+
+      <!-- B -->
+      <button class="answer-btn answer-b" data-answer="2">
+        <div class="box-line-ans"></div> 
+        <img src="images/btn_b.png" alt="B" class="answer-frame img-default">
+    <img src="images/btn_b2.png" alt="B" class="answer-frame img-hover">
+        <span class="answer-text" id="answerB">ああああああああああああ</span>
+      </button>
+
+      <!-- C -->
+      <button class="answer-btn answer-c" data-answer="3">
+        <div class="box-line-ans"></div>
+        <img src="images/btn_c.png" alt="C" class="answer-frame img-default">
+        <img src="images/btn_c2.png" alt="C" class="answer-frame img-hover">
+        <span class="answer-text" id="answerC">ああああああああああああ</span>
+      </button>
+
+      <!-- D -->
+      <button class="answer-btn answer-d" data-answer="4">
+        <div class="box-line-ans"></div>
+        <img src="images/btn_d.png" alt="D" class="answer-frame img-default">
+        <img src="images/btn_d2.png" alt="D" class="answer-frame img-hover">
+        <span class="answer-text" id="answerD">ああああああああああああ</span>
+      </button>
+
+    </div>
+  </div>
+
+</body>
+</html>

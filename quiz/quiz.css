@@ -1,0 +1,240 @@
+@charset "utf-8";
+
+/* リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ボディ - 背景画像 */
+.quiz-body {
+  width: 1024px;
+  height: 100vh;
+  margin: 0 auto;
+  background-image: url('../images/bg_02.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* タイマー（左上） */
+.timer-wrap {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 120px;
+  height: 120px;
+}
+
+.timer-img {
+  width: 100%;
+  height: 100%;
+}
+
+.timer-num {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ヒントボタン（右上） */
+.hint-buttons {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  display: flex;
+  gap: 15px;
+}
+
+.hint-btn {
+  width: 80px;
+  height: 80px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative; /* 子要素（画像）の重なり基準 */
+}
+
+/* 画像の基本設定 */
+.hint-btn img {
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+  top: 0;
+  left: 0;
+  object-fit: contain; 
+  transition: opacity 0.2s;
+}
+
+/* ホバー用画像は最初隠しておく */
+.hint-btn .img-hover {
+  opacity: 0;
+}
+
+/* ホバー時の切り替え */
+.hint-btn:not(.used):hover .img-default {
+  opacity: 0;
+}
+.hint-btn:not(.used):hover .img-hover {
+  opacity: 1;
+}
+
+/* 使用済みボタンの処理 */
+.hint-btn.used {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.hint-btn.used .img-hover {
+  display: none; /* 使用済みならホバー用画像は出さない */
+}
+
+/* クイズエリア（300px固定） */
+.question-area {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ラインの共通設定 */
+.box-line,
+.box-line-ans {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* 画面の横幅いっぱいに広げる（1024pxの親に対して十分な広さ） */
+  width: 2000px; 
+  height: 2px; /* 画像の高さに合わせて調整 */ 
+  background-repeat: repeat-x;
+  background-position: center;
+  z-index: -1; 
+  pointer-events: none; 
+}
+
+.box-line {
+  background-image: url('../images/line_questions.png');
+}
+
+.box-line-ans {
+  background-image: url('../images/line_select.png'); 
+}
+
+/* 枠とテキストをラインより上に配置 */
+.question-frame, .answer-frame {
+  z-index: 1;
+}
+
+.question-text, .answer-text {
+  z-index: 2;
+}
+
+/* 問題文（上部） */
+.question-box {
+  position: relative;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-frame {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.question-text {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 80px;
+  line-height: 1.5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 選択肢グリッド（下部） */
+.answers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  height: 180px;
+}
+
+/* 選択肢ボタン */
+.answer-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 枠画像の基本設定（2枚重ねる） */
+.answer-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  transition: opacity 0.2s;
+  z-index: 1; 
+}
+
+/* ホバー枠は最初隠す */
+.answer-btn .img-hover {
+  opacity: 0;
+}
+
+/* ホバー時の切り替え設定 */
+.answer-btn:hover .img-default {
+  opacity: 1; 
+}
+
+.answer-btn:hover .img-hover {
+  opacity: 1; 
+}
+
+/* テキストの重なり（最前面） */
+.answer-text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 40px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  pointer-events: none; /* テキストがクリックの邪魔をしないように */
+}
+
+/* 選択済み・非表示の時の挙動 */
+.answer-btn.selected {
+  opacity: 0.7;
+}
+
+.answer-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
