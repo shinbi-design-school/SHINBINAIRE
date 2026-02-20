@@ -96,13 +96,12 @@ footer {
     bottom: 0;
     /*top: 1000px;
     left: 890px;*/
-    font-size: medium;
     text-align: center;
 }
 
 small {
     color: #FFFFFF;
-    font: normal normal normal 12px/14px Helvetica;
+    font-size: 12px;
 }
 
 
