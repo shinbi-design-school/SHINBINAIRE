@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- Reset CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+<!-- Original CSS -->
+    <link rel="stylesheet" href="css/howto.css">
+<!-- Modal CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<!-- Modal js -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js" defer></script>
+    <script src="js/howto.js" defer></script>
+</head>
+<body>
+
+<!-- コンテンツ -->
+<!-- <button class="js-open-modal" data-slide-index="1">スライド1を開く</button> -->
+<button type="button" class="js-open-modal text-button" data-slide-index="1">遊び方</button>
+<!-- モーダル -->
+<div class="modal" id="modal">
+    <div class="modal__overlay js-close-modal"></div>
+    <div class="modal__content">
+        <button class="modal__close-btn js-close-modal" aria-label="閉じる">×</button>
+<!-- スライダー -->
+            <div class="swiper modal__slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide modal__slide"><img class="rule_image" src="images/rule01.png"></div>
+                    <div class="swiper-slide modal__slide"><img class="rule_image" src="images/rule02.png"></div>
+                    <div class="swiper-slide modal__slide"><img class="rule_image" src="images/rule03.png"></div>
+                    <div class="swiper-slide modal__slide"><img class="rule_image" src="images/rule04.png"></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+    </div>
+</div>
+    
+</body>
+</html>

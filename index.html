@@ -3,27 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>SHINBINAIRE シンビネア | あなたのシンビ愛を確かめるクイズゲーム</title>
+<!-- Reset CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+<!-- Original CSS -->
     <link rel="stylesheet" href="css/top.css">
-    <link rel="peconnect" href="https://fonts.googleapis.com">
-    <link rel="peconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet">
+<!-- Modal CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<!-- Modal js -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js" defer></script>
+    <script src="js/howto.js" defer></script>
    
 </head>
 <body id="top">
+    <div id="container">
       <div id="loginbox">
-             <form action="">
+             <form action="post">
                  <input type="text" placeholder="名前" name="username" id="login">
                  <input type="text" placeholder="メールアドレス" name="mail" id="login">
                  <input type="submit" name="login" value="ログイン" id="login2">
              </form>
-             <p id="menu">　/　遊び方　/　ランキングを見る　/</p>
        </div>
-</body>
+       <p id="t_link">　/　<button type="button" class="js-open-modal text-button" data-slide-index="1">遊び方</button>　/　<button type="button" class="text-button"><a href="#">ランキングを見る</a></button>　/</p>
+    </div>
+
+
+<!-- モーダル -->
+<div class="modal" id="modal">
+    <div class="modal__overlay js-close-modal"></div>
+    <div class="modal__content">
+        <button class="modal__close-btn js-close-modal" aria-label="閉じる">×</button>
+<!-- スライダー -->
+            <div class="swiper modal__slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide modal__slide"><img class="rule_image" src="images/rule01.png"></div>
+                    <div class="swiper-slide modal__slide"><img class="rule_image" src="images/rule02.png"></div>
+                    <div class="swiper-slide modal__slide"><img class="rule_image" src="images/rule03.png"></div>
+                    <div class="swiper-slide modal__slide"><img class="rule_image" src="images/rule04.png"></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+    </div>
+</div>
+
 <footer>
     <div id="copyright">
-          <p>&copy; 2026 KOCCHAN'S RIDERS CLUB.</p>
+          <small>&copy; 2026 KOCCHAN'S RIDERS CLUB.</small>
     </div>
 </footer>
 
+</body>
 </html>
