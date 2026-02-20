@@ -1,0 +1,26 @@
+@charset "utf-8";
+body {
+    background-image: url(../images/profile_akabane.webp);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+}
+
+#selectbutton {
+    position: absolute;
+    bottom: 90px;
+    left: 400px;
+}
+
+#botan {
+    background-color: #3FA9F5;
+    color: #FFFFFF;
+    text-align: center;
+    width: 255px;
+    height: 50px;
+    border-radius: 60px;
+    border-style: none;
+    font: normal normal normal 16px/27px Hiragino Sans;
+}
