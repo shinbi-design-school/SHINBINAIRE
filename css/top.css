@@ -24,7 +24,7 @@ body {
     height: 50px;
     width: 340px;
     margin-top: 40px;
-    margin-bottom: 66px;
+    margin-bottom: 30px;
     font: normal normal bold 24px/29px Helvetica;
 }
 
@@ -41,7 +41,7 @@ body {
     text-align: center;
     padding-top: 24px;
     /*position: center;*/
-    bottom: 50px;
+    bottom: 90px;
     /*margin: 0 auto;*/
     left: 50%;
     transform: translateX(-50%);
@@ -51,13 +51,15 @@ body {
 }
 
 ::placeholder{
-    padding-left: 20px;
+    /*padding-left: 20px;*/
     font-size: large;
     /*font: normal normal bold 24px/29px;*/
     /*font: normal normal bold 24px/29px Helvetica;*/
     font: normal normal normal 14px/24px Hiragino Sans;
 }
-
+input {
+    padding-left: 20px;
+}
 p {
     color: #FFFFFF;
     font: normal normal normal 12px/14px Helvetica;
@@ -75,7 +77,7 @@ p {
 footer {
     width: 100%;
     position: absolute;
-    bottom: 10px;
+    bottom: 5px;
     /*top: 1000px;
     left: 890px;*/
     font-size: medium;
