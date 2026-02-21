@@ -1,8 +1,14 @@
 @charset "utf-8";
 
 body {
-    
+    letter-spacing: 0.2rem;
 }
+#container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+/* 赤羽根先生 */
 div#profile_a_op {
     background-image: url(../images/profile_akabane.webp);
     background-size: auto 100%;
@@ -13,6 +19,7 @@ div#profile_a_op {
     width: 100%;
     opacity: 0.7;
     filter: blur(4px);
+    transform: scale(1.05);
 }
 
 div#profile_a {
@@ -24,7 +31,97 @@ div#profile_a {
     width: 100%;
     position: absolute;
     top: 0;
+    display: flex;
+    justify-content: center;
+}
+/* 田中先生 */
+div#profile_t_op {
+    background-image: url(../images/profile_tanaka.webp);
+    background-size: auto 100%;
+    background-position: center center;
+    background-repeat: repeat-x;
+    background-color:#0000cd;
+    height: 100vh;
+    width: 100%;
+    opacity: 0.7;
+    filter: blur(4px);
+    transform: scale(1.05);
+}
 
+div#profile_t {
+    background-image: url(../images/profile_tanaka.webp);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* 臼井先生 */
+div#profile_u_op {
+    background-image: url(../images/profile_usui.webp);
+    background-size: auto 100%;
+    background-position: center center;
+    background-repeat: repeat-x;
+    background-color:#0000cd;
+    height: 100vh;
+    width: 100%;
+    opacity: 0.7;
+    filter: blur(4px);
+    transform: scale(1.05);
+}
+
+div#profile_u {
+    background-image: url(../images/profile_usui.webp);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+}
+
+div #aspect_16_10 {
+    aspect-ratio: 16 / 10;
+    margin: 0 auto;
+    /* justify-content: center; */
+}
+div #wrap_button {
+    padding-top: calc( 100% - 50%);
+    display: flex;
+    /* justify-content: center; */
+}
+button {
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+}
+
+button.quiz_start {
+    background-color: #3FA9F5;
+    color: #FFFFFF;
+    text-align: center;
+    width: 220px;
+    height: 50px;
+    border-radius: 25px;
+    border-style: none;
+    margin-right: 24px;
+    margin-left: calc(100% - 78%);
+}
+button.return_select {
+    background-color: #3FA9F5;
+    color: #FFFFFF;
+    text-align: center;
+    width: 220px;
+    height: 50px;
+    border-radius: 25px;
+    border-style: none;
 }
 
 /* .transparent {
@@ -35,6 +132,7 @@ div#profile_a {
     position: absolute;
     bottom: 90px;
     left: 400px;
+    
 }
 
 #botan {
