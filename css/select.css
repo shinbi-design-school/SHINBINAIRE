@@ -124,4 +124,5 @@ footer {
 small {
     color: #FFFFFF;
     font: normal normal normal 12px/14px Helvetica;
+    text-shadow : 0 0 7px #000000;
 }

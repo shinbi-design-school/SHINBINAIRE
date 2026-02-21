@@ -124,24 +124,7 @@ button.return_select {
     border-style: none;
 }
 
-/* .transparent {
-    background: rgba(255,255,255,0.5); 
-} */
-
-#selectbutton {
-    position: absolute;
-    bottom: 90px;
-    left: 400px;
-    
-}
-
-#botan {
-    background-color: #3FA9F5;
-    color: #FFFFFF;
-    text-align: center;
-    width: 220px;
-    height: 50px;
-    border-radius: 25px;
-    border-style: none;
-    font: normal normal normal 16px/27px Hiragino Sans;
+button:hover {
+    background-color: #FFD700;
+    color: #666666;
 }

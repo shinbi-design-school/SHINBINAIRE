@@ -39,6 +39,7 @@ a {
 
 #login2:hover {
     background-color: #FFD700;
+    color: #666666;
 }
 
 #container {
@@ -65,7 +66,7 @@ a {
     font-size: large;
     /*font: normal normal bold 24px/29px;*/
     /*font: normal normal bold 24px/29px Helvetica;*/
-    font: normal normal normal 14px/24px Hiragino Sans;
+    font-size: 14px;
 }
 input {
     padding-left: 20px;
@@ -77,7 +78,6 @@ input {
     left: 50%;
     transform: translateX(-50%);
     top: 450px;*/
-    font: normal normal normal 14px/24px Hiragino Sans;
     color: #ffffff;
     text-shadow : 0 0 7px #000000;
     font-size: 16px;
@@ -97,6 +97,7 @@ footer {
     /*top: 1000px;
     left: 890px;*/
     text-align: center;
+    text-shadow : 0 0 7px #000000;
 }
 
 small {
