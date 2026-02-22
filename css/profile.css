@@ -103,7 +103,7 @@ button {
     letter-spacing: 0.2rem;
 }
 
-button.quiz_start {
+a.quiz_start {
     background-color: #3FA9F5;
     color: #FFFFFF;
     text-align: center;
@@ -113,8 +113,10 @@ button.quiz_start {
     border-style: none;
     margin-right: 24px;
     margin-left: calc(100% - 78%);
+    line-height: 50px;
+    text-decoration: none;
 }
-button.return_select {
+a.return_select {
     background-color: #3FA9F5;
     color: #FFFFFF;
     text-align: center;
@@ -122,9 +124,12 @@ button.return_select {
     height: 50px;
     border-radius: 25px;
     border-style: none;
+    line-height: 50px;
+    text-decoration: none;
 }
 
-button:hover {
+a:hover {
     background-color: #FFD700;
     color: #666666;
+    transition: .6s;
 }

@@ -40,6 +40,7 @@ a {
 #login2:hover {
     background-color: #FFD700;
     color: #666666;
+    transition: .6s;
 }
 
 #container {
