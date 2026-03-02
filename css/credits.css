@@ -1,0 +1,343 @@
+
+*, *::before, *::after {
+  margin: 0;       /* 外側の余白をゼロに */
+  padding: 0;      /* 内側の余白をゼロに */
+  box-sizing: border-box; /* paddingやborderをwidthの中に含める計算方式に変更 */
+}
+
+/* ================================================================
+   html・body の基本設定
+   ページ全体の幅・高さ・基本フォントなどを設定
+================================================================ */
+html, body {
+  width: 100%;           /* 横幅を画面いっぱいに */
+  height: 100%;          /* 縦幅を画面いっぱいに */
+  overflow-x: hidden;    /* 横スクロールが出ないようにする */
+}
+
+body {
+  font-family: "hiragino-kaku-gothic-pron", sans-serif;
+  color: #fff;                      /* 文字色を白に */
+  min-height: 100vh;                /* 最低でも画面の高さ分は確保（vh=viewport height） */
+  display: flex;                    /* Flexboxレイアウトを有効にする */
+  flex-direction: column;           /* 子要素を縦方向に並べる */
+  align-items: center;              /* 横方向：中央揃え */
+  justify-content: center;          /* 縦方向：中央揃え */
+}
+
+
+/* ================================================================
+   背景（.bg）
+   position: fixed で画面全体に固定し、bg_select.png を背景に表示。
+   ::after 疑似要素で黒い半透明レイヤーを重ねて暗くしています。
+================================================================ */
+.bg {
+  position: fixed;        /* スクロールしても動かず画面に固定 */
+  inset: 0;               /* top/right/bottom/left すべて0（画面全体を覆う） */
+  z-index: 0;             /* 重なり順：0（一番下のレイヤー） */
+  background-image: url('../images/bg_select.png'); /* 背景画像のパスを指定 */
+  background-size: cover;    /* 画像を画面全体に引き伸ばして表示 */
+  background-position: center; /* 画像の中心を基準に表示 */
+}
+
+.bg::after {
+  /* ::after は疑似要素。CSSだけで要素の「後ろ」に仮想の要素を生成できます */
+  content: '';              /* 疑似要素は必ずcontent:''が必要（空でOK） */
+  position: absolute;       /* 親要素（.bg）を基準に配置 */
+  inset: 0;                 /* .bg全体を覆うように広げる */
+  background: rgba(0, 0, 0, 0.60); /* 黒を60%の透明度で重ねる → 暗くする */
+}
+
+
+/* ================================================================
+   メインラッパー（.page）
+   コンテンツ全体を包む要素。中央寄せと余白を設定。
+================================================================ */
+.page {
+  position: absolute;
+  top: 180px;
+  z-index: 1;               /* 背景（z-index:0）より上に重ねる */
+  width: 100%;
+  /* min-height: 100vh; */
+  display: flex;            /* Flexboxで子要素を整列 */
+  flex-direction: column;   /* 縦方向に並べる */
+  align-items: center;      /* 横：中央 */
+  justify-content: center;  /* 縦：中央 */
+}
+
+/* --- ヘッダー領域 --- */
+header {
+  margin-top: 50px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.credits-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 80px;
+  margin-bottom: 47px;
+}
+
+/* 横線：一番奥に配置 */
+.header-line {
+  background-image: url('../images/line_ranking.png');
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* 枠画像コンテナ：線の上 */
+.header-frame-container {
+  position: relative;
+  display: inline-block;
+  z-index: 11;
+}
+
+/* 枠画像 */
+.header-frame-img {
+  display: block;
+  width: 680px;
+  height: 80px;
+}
+
+/* RANKINGテキスト：枠画像の上 */
+.header-title-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 8px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.title-block {
+  text-align: center;  /* テキストを中央揃え */
+  margin-bottom: 16px; /* 下に16pxの余白 */
+  font-size: 1rem;;
+}
+
+.title-block  h1 {
+  font-size: 1.4rem;
+}
+
+
+
+
+
+
+
+
+
+/* ================================================================
+   プレイヤー一覧コンテナ（.players）
+   Flexboxで4人を横並びに配置
+================================================================ */
+.players {
+  height: 60vh;
+  display: flex;              /* Flexboxを有効に */
+  align-items: flex-end;      /* 子要素を下揃えにする（足元を揃える） */
+  justify-content: center;    /* 横方向：中央揃え */
+  gap: 40px;
+  width: 100%;
+  max-width: 1020px;
+}
+
+
+/* ================================================================
+   個別プレイヤーカード（.player）
+   各プレイヤーを縦方向（画像→名前→番号）に並べる
+================================================================ */
+.player {
+  display: flex;
+  flex-direction: column;  /* 縦並び */
+  align-items: center;     /* 横：中央揃え */
+  cursor: pointer;         /* マウスを乗せると矢印→指アイコンに変化 */
+  text-decoration: none;   /* リンクの下線を消す（将来リンクにする場合の備え） */
+  color: inherit;          /* 親要素の文字色を引き継ぐ */
+}
+
+
+
+/* ================================================================
+   画像ラッパー（.player-img-wrap）
+   ホバー時のアニメーション（拡大・浮き上がり）と光エフェクトをここに設定
+================================================================ */
+.player-img-wrap {
+  position: relative;  /* 疑似要素（::before）の基準点にするため */
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 8px 30px rgba(0,0,0,0.7));
+}
+
+.player .player-img-wrap a {
+  display: block;
+  height: 55vh;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeup 0.8s ease forwards;
+  filter: blur(5px);
+}
+
+.players .player:nth-child(1) .player-img-wrap a { animation-delay: 0.2s; }
+.players .player:nth-child(2) .player-img-wrap a { animation-delay: 0.4s; }
+.players .player:nth-child(3) .player-img-wrap a { animation-delay: 0.6s; }
+.players .player:nth-child(4) .player-img-wrap a { animation-delay: 0.8s; }
+@keyframes fadeup {
+  to{
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ホバー時：画像を拡大＋上に浮かせる */
+.player:hover .player-img-wrap {
+  transform: scale(1.10) translateY(-10px);
+}
+
+
+
+/* 画像本体のスタイル */
+.player-img-wrap img {
+  display: block;                      /* 画像下の余白をなくす */
+  height: 55vh;  /* 画面幅に応じて高さが変わる */
+  width: auto;                         /* 高さに合わせて幅は自動調整 */
+  object-fit: contain;                 /* 画像の比率を保ちながら収める */
+}
+
+
+/* ================================================================
+   プレイヤー名（.player-name）
+================================================================ */
+.player-name {
+  margin-top: 16px;
+  font-family: 'normal', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;           /* 白に変更 */
+  text-align: center;
+}
+
+/* ホバー時：名前の色を青に変更 */
+.player:hover .player-name {
+  color: #FFD700;
+}
+
+
+/* ================================================================
+   プレイヤー番号（.player-number）
+================================================================ */
+.player-number {
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  color: rgba(255,255,255,0.35);  /* 白35%透明度 → 薄く目立たなく */
+  margin-top: 4px;
+}
+
+
+/* モーダル */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 100;
+  background-color: rgba(120, 123, 131, 0.8);
+}
+
+/* モーダルがactiveの時 */
+.modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* モーダル背景のオーバーレイ部分 */
+.modal__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* モーダルのコンテンツ */
+.modal__content {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 1;
+  padding: 20px;
+}
+
+/* モーダルを閉じるボタン */
+.modal__close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Swiperの矢印部分 */
+@media (max-width: 768px) {
+  .modal .swiper-button-next,
+  .modal .swiper-button-prev {
+    display: none;
+  }
+}
+
+.credit_image {
+    width: 100%;
+    height: auto;
+}
+
+
+
+/* ================================================================
+   レスポンシブ対応（スマホなど画面幅が狭い時の対応）
+   @media で条件を指定し、条件を満たす場合にスタイルを上書きします。
+   max-width: 700px → 画面幅が700px以下の時に適用
+================================================================ */
+@media (max-width: 700px) {
+  .players {
+    flex-wrap: wrap;  /* 横に並びきらない時に折り返す */
+    gap: 20px;
+  }
+  .player-img-wrap img {
+    height: 200px;    /* スマホでは画像を小さくする */
+  }
+}
+

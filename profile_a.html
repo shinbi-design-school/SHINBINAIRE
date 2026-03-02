@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ファビコン -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 <!-- Reset CSS -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- Original CSS -->
     <link rel="stylesheet" href="css/profile.css">
+<!-- Adobe Web Fonts -->
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'nyx6yfv',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
 
 </head>
 <body>
@@ -16,7 +29,7 @@
         <div id="profile_a">
             <div id="aspect_16_10">
                 <div id="wrap_button">
-                    <a class="quiz_start" href="#">クイズに挑戦する</a>
+                    <a class="quiz_start" href="akabane.php">クイズに挑戦する</a>
                     <a class="return_select" href="select.html">他の先生を選ぶ</a>
                 </div>
             </div>

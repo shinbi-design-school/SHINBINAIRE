@@ -1,0 +1,453 @@
+@charset "utf-8";
+
+/* リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ボディ - 背景画像 */
+.quiz-body {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  background-image: url('../images/bg_02.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 先生画像 */
+.center-graphic {
+  position: fixed; 
+  top: 110px;                  
+  left: 50%;                   
+  transform: translateX(-50%); 
+  width: 720px;
+  height: 860px;
+  object-fit: contain; 
+}
+
+.timer-wrap, .hint-buttons, .question-area {
+  z-index: 5; 
+}
+
+/* --- タイマー（左上） --- */
+.timer-wrap {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 120px;
+  height: 120px;
+}
+
+.timer-img {
+  width: 100%;
+  height: 100%;
+}
+
+.timer-num {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  /* font-weight: bold; */
+  color: #fff;
+}
+
+/* --- ヒントボタン（右上） --- */
+.hint-buttons {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  display: flex;
+  gap: 16px;
+}
+
+.hint-btn {
+  width: 100px;
+  height: 65px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.hint-btn img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+  transition: opacity 0.2s;
+}
+
+.hint-btn .img-hover {
+  opacity: 0;
+}
+
+.hint-btn:not(.used):hover .img-default {
+  opacity: 0;
+}
+
+.hint-btn:not(.used):hover .img-hover {
+  opacity: 1;
+}
+
+.hint-btn.used {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hint-btn.used .img-hover {
+  display: none;
+}
+
+/* =============================================
+   モーダル共通
+============================================= */
+.hint-modal, .phone-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.hint-modal {
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hint-modal-inner {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 48px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.hint-modal-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.hint-modal-close, .phone-modal-close {
+  background: rgba(30, 50, 100, 0.75);
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.hint-modal-close {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 12px 40px;
+  font-size: 16px;
+}
+
+.hint-modal-close:hover, .phone-modal-close:hover {
+  background: #c04444;
+}
+
+/* =============================================
+   テレフォンモーダル
+============================================= */
+.phone-modal-inner {
+  position: absolute;
+  top: 50%;                      
+  left: 50%;                     
+  transform: translate(-50%, -50%); 
+  width: 800px;               
+  height: 600px;                
+}
+
+.phone-modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.phone-modal-text {
+  position: absolute;
+  bottom: 90px;                  
+  left: 50%;
+  transform: translateX(-50%);
+  width: 680px;                  
+  color: #fff;
+  font-size: 24px;               
+  font-weight: bold;
+  line-height: 1.6;
+  z-index: 1;
+  padding: 0 16px;
+}
+
+.phone-modal-close {
+  position: absolute;
+  top: 12px;                     
+  right: 12px;                   
+  width: 36px;                   
+  height: 36px;               
+  border-radius: 50%;
+  font-size: 18px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =============================================
+   終了モーダル
+============================================= */
+.result-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-modal-inner {
+  background: #fff;
+  border-radius: 16px;
+  padding: 48px 56px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  min-width: 400px;
+}
+
+.result-score {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.result-comment {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e05a5a;
+  margin-bottom: 40px;
+  min-height: 30px;
+}
+
+.result-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-btn {
+  display: block;
+  padding: 14px 0;
+  background: #3FA9F5;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.result-btn:hover {
+  background: #ffe600;
+  color: #333;
+}
+
+/* =============================================
+   クイズエリア
+============================================= */
+.question-area {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1024px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 問題文（上部） */
+.question-box {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-line {
+  background-image: url('../images/line_select.png');
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 99px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.question-frame {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.question-text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 80px;
+  line-height: 1.5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 選択肢グリッド（下部） */
+.answers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 90px 90px;
+  gap: 0 16px;
+  height: 180px;
+  isolation: isolate;
+  position: relative;
+}
+
+.box-line-ans {
+  background-image: url('../images/line_questions.png');
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 90px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.line-row1 { top: 0; }
+.line-row2 { top: 90px; }
+
+/* 選択肢ボタン */
+.answer-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0 0 55px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  z-index: 2;
+}
+
+.answer-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.answer-btn .img-default {
+  opacity: 1;
+}
+
+.answer-btn .img-hover {
+  opacity: 0;
+}
+
+/* 通常のホバー挙動 */
+/* ホバー時の.img-defaultの動作（追加） */
+.answer-btn:not(:disabled):not(.is-checked):hover .img-default {
+  opacity: 0;
+}
+
+.answer-btn:not(:disabled):not(.is-checked):hover .img-hover {
+  opacity: 1;
+}
+
+/* 点滅時の挙動（is-blinkingクラス） */
+.answer-btn.is-blinking .img-default {
+  opacity: 0 !important;
+}
+
+.answer-btn.is-blinking .img-hover {
+  opacity: 1 !important;
+}
+
+.answer-text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-size: 26px;
+  letter-spacing: 0.2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 40px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+
+/* --- 正解 / 不正解 / 非表示 状態制御 --- */
+.answer-btn.is-hidden {
+  pointer-events: none;
+}
+
+.answer-btn.is-hidden .answer-text {
+  visibility: hidden;
+}
+
+.answer-btn.is-hidden .img-hover {
+  opacity: 0 !important;
+}
+
+.answer-btn.is-resetting {
+  opacity: 0;
+}
+
+.answer-btn.is-checked,
+.answer-btn:disabled {
+  cursor: default;
+}
+
+.answer-btn.is-checked:hover .img-default {
+  opacity: 1;
+}
+
+.answer-btn.is-checked:hover .img-hover,
+.answer-btn:disabled:hover .img-hover {
+  opacity: 0;
+}

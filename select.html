@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHINBINAIRE シンビネア | あなたのシンビ愛を確かめるクイズゲーム</title>
+    <!-- ファビコン -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 <!-- Reset CSS -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 <!-- Original CSS -->
     <link rel="stylesheet" href="css/select.css">
+<!-- Adobe Web Fonts -->
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'nyx6yfv',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
    
 </head>
 
@@ -17,15 +30,21 @@
             <img src="images/bg_select.png" alt="クイズステージ背景">
         </div>
         <div class="characters">
-            <a  href="profile_a.html">
-                <img src="images/akabane_full.png" alt="赤羽根先生のクイズに答える" class="character akabane">
-            </a>
-            <a  href="profile_t.html">
-                <img src="images/tanaka_full.png" alt="田中先生のクイズに答える" class="character tanaka">
-            </a>
-            <a  href="profile_u.html">
-                <img src="images/usui_body.png" alt="臼井先生のクイズに答える" class="character usui">
-            </a>
+            <div class="teacher">
+                <a href="profile_a.html">
+                    <img src="images/akabane_full.png" alt="赤羽根先生のクイズに答える" class="akabane">
+                </a>
+            </div>
+            <div class="teacher">
+                <a href="profile_t.html">
+                    <img src="images/tanaka_full.png" alt="田中先生のクイズに答える" class="tanaka">
+                </a>
+            </div>
+            <div class="teacher">
+                <a href="profile_u.html">
+                    <img src="images/usui_body.png" alt="臼井先生のクイズに答える" class="usui">
+                </a>
+            </div>
         </div>
     </div>
     <footer>
